@@ -7,7 +7,7 @@ import SubscribeForm from '@/components/subscribe-form';
 import Bio from '@/components/bio';
 
 
-export function findPostBySlug(slug: string): Post {
+function findPostBySlug(slug: string): Post {
   const post = allPosts.find((post) => post._raw.flattenedPath === slug)
 
   if (!post) throw new Error(`Post not found for slug: ${slug}`)
