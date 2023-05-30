@@ -2,9 +2,20 @@ import { Inter } from 'next/font/google'
 
 import "./globals.scss";
 
-export const metadata = {
+const inter = Inter({ subsets: ['latin'], display: 'swap' });
+
+const defaultMeta = {
   title: 'Narrativas, por Fran e Alessandro Tegner',
-  description: 'Narrativas',
+  description: 'Histórias do cotidiano infantil, contadas pela Fran e ilustradas pelo Alessandro.',
+}
+
+export const metadata = {
+ ...defaultMeta,
+  metadataBase: new URL('https://narrativas.blog.br'),
+  openGraph: {
+    ...defaultMeta,
+    type: 'article',
+  }
 }
 
 export default function RootLayout({
@@ -13,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" className={inter.className}>
       <body>
         <main className="container is-fluid pt-4">
           <div className="columns is-centered">

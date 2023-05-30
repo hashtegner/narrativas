@@ -13,7 +13,7 @@ export default function SiteHeader({ isIndex = false, children }: SiteHeaderProp
     <header className="has-text-centered">
       <Link href="/" className="has-text-black">
         <figure>
-          <Image src={logo} quality={95} height={120} alt="Narrativas, por Fran e Alessandro Tegner" className="is-rounded" />
+          <Image src={logo} quality={95} height={120} alt="Narrativas, por Fran e Alessandro Tegner" className="is-rounded" placeholder="blur" />
         </figure>
 
         {isIndex && (

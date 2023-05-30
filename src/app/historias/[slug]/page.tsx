@@ -7,12 +7,28 @@ import SubscribeForm from '@/components/subscribe-form';
 import Bio from '@/components/bio';
 
 
-function findPostBySlug(slug: string): Post {
+export function findPostBySlug(slug: string): Post {
   const post = allPosts.find((post) => post._raw.flattenedPath === slug)
 
   if (!post) throw new Error(`Post not found for slug: ${slug}`)
 
   return post
+}
+
+export const generateMetadata = async ({ params }: { params: { slug: string } }) => {
+  const post = findPostBySlug(params.slug);
+
+  const defaultMeta = {
+    title: `${post.title} - Narrativas`,
+    description: post.preview,
+  }
+
+  return {
+    ...defaultMeta,
+    openGraph: {
+      ...defaultMeta,
+    }
+  }
 }
 
 export default async function PostPage({ params }: { params: { slug: string } }) {
@@ -53,9 +69,3 @@ export default async function PostPage({ params }: { params: { slug: string } })
 
 
 export const generateStaticParams = async () => allPosts.map((post) => ({ params: { slug: post._raw.flattenedPath } }));
-
-
-export const generateMetadata = ({ params }: { params: { slug: string } }) => {
-  const post = findPostBySlug(params.slug);
-  return { title: post.title }
-}
