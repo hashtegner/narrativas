@@ -15,7 +15,7 @@ export default function SubscribeForm() {
         </div>
 
         <div className="control">
-          <input type="submit" className="button is-rounded" value="Castrar" />
+          <input type="submit" className="button is-rounded" value="Cadastrar" />
         </div>
       </div>
     </form>
