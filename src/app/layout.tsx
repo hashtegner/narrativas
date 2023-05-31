@@ -1,4 +1,5 @@
 import { Inter } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/react'
 
 import "./globals.scss";
 
@@ -33,6 +34,7 @@ export default function RootLayout({
             </div>
           </div>
         </main>
+        <Analytics />
       </body>
     </html>
   )
